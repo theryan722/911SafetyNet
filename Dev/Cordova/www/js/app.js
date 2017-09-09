@@ -164,7 +164,33 @@ function loadMedicalIDInfo() {
         $$('#u_emergencycontact_name').html(uinf.emergencycontact_name);
         $$('#u_emergencycontact_phone').html(uinf.emergencycontact_phone);
         $$('#u_usernotes').html(uinf.usernotes);
+        $$('#u_picture').attr('src', localStorage.getItem('upicture'));
     }
+}
+
+//Uploads an image to the specified path
+function uploadImage(loc, img, callback = undefined) {
+    var storageRef = firebase.storage().ref(loc).put(img, { contentType: 'image/jpeg' });
+    storageRef.on(firebase.storage.TaskEvent.STATE_CHANGED, function (snapshot) {
+        //var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        switch (snapshot.state) {
+            case firebase.storage.TaskState.PAUSED: // or 'paused'
+                break;
+            case firebase.storage.TaskState.RUNNING: // or 'running'
+                app.showIndicator();
+                break;
+        }
+    }, function (error) {
+        app.hideIndicator();
+        app.alert('There was an error attempting to upload the image.', 'Error');
+        return;
+    }, function () {
+        // Upload completed successfully, now we can get the download URL
+        app.hideIndicator();
+        if (typeof callback !== 'undefined') {
+            callback(storageRef.snapshot.downloadURL);
+        }
+    });
 }
 
 function loadSettings() {
@@ -182,7 +208,12 @@ function loadSettings() {
         $$('input[name=setting_emergencycontact_name').val(uinf.emergencycontact_name);
         $$('input[name=setting_emergencycontact_phone').val(uinf.emergencycontact_phone);
         $$('input[name=setting_usernotes').val(uinf.usernotes);
+        $$('#setting_disp_picture').attr('src', localStorage.getItem('upicture'));
     }
+}
+
+function getPhoneNumber() {
+    return JSON.parse(localStorage.getItem('uinfo')).phone;
 }
 
 function saveSettings() {
@@ -203,6 +234,32 @@ function saveSettings() {
     localStorage.setItem('uinfo', JSON.stringify(uobj));
     app.addNotification({ message: 'Saved Info.' });
     goBack();
+}
+
+//Checks if a files size is within the max limit
+function validateFileSize(file, maxsize = 50) {
+    var FileSize = file.size / 1024; // in KB
+    return FileSize < maxsize;
+}
+
+function updatePicture() {
+    var reader = new FileReader();
+    if (document.querySelector('input[name=setting_picture]').files[0]) {
+        if (validateFileSize(document.querySelector('input[name=setting_picture]').files[0], 15000)) {
+            reader.readAsArrayBuffer(document.querySelector('input[name=setting_picture]').files[0]);
+        } else {
+            app.alert('The file you uploaded is too large. Please make sure it is less than ' + 15000 + 'KB.', 'Error');
+        }
+    } else {
+        app.alert('Please select an image before uploading.', 'Select Image');
+    }
+    reader.onloadend = function () {
+        uploadImage('users/' + getPhoneNumber() + '/picture.jpg', reader.result, function (profurl) {
+            firebase.database().ref('users/' + getPhoneNumber()).update({ picture: profurl });
+            $$('#setting_disp_picture').attr('src', profurl);
+            localStorage.setItem('upicture', profurl);
+        });
+    }
 }
 /* ========= End Functions ======= */
 

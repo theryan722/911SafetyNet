@@ -149,6 +149,13 @@ function goBack() {
     mainView.router.back();
 }
 
+function loadMedicalIDInfo() {
+    let uinf = JSON.parse(localStorage.getItem('uinfo'));
+    if (uinf) {
+        
+    }
+}
+
 function loadSettings() {
     let uinf = JSON.parse(localStorage.getItem('uinfo'));
     if (uinf) {
@@ -218,5 +225,9 @@ function displayMenuActions() {
 /* ====== Page Init ======= */
 app.onPageInit('setinfo', function (page) {
     loadSettings();
+});
+
+app.onPageInit('medicalid', function (page) {
+    loadMedicalIDInfo();
 });
 /* ====== End Page Init ===== */

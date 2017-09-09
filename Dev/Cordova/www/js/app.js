@@ -32,12 +32,41 @@ var firebaseconfig = {
     messagingSenderId: "304105351563"
   };
   firebase.initializeApp(firebaseconfig);
+
+  loadDialPage();
 /* ================ End Initialize ============= */
 /* ================ Local Storage ======== */
-
 //Gets the users info
 function getUserInfo() {
     return JSON.parse(localStorage.getItem('userinfo'));
 }
 
+function setUserInfo(uinfo) {
+    //TODO
+}
+
 /* ============= End Local Storage ======== */
+/* =========== Load Pages ======== */
+function loadAboutPage() {
+    mainView.router.loadPage('pages/about.html');
+}
+
+function loadDialPage() {
+    mainView.router.loadPage('pages/dial.html');
+}
+
+function loadInfoPage() {
+    mainView.router.loadPage('pages/info.html');
+}
+
+function loadMedicalIDPage() {
+    mainView.router.loadPage('pages/medicalid.html');
+}
+/* ============ End Load Pages ======= */
+/* ============ Functions ====== */
+function goBack() {
+    mainView.router.back();
+}
+
+
+/* ========= End Functions ======= */

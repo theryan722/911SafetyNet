@@ -115,11 +115,11 @@ function setInfo_DoctorInfo(info) {
 }
 
 function setInfo_EmergencyContact_Name(info) {
-    localStorage.setItem('uinfo_name', info);
+    localStorage.setItem('uinfo_emergencycontact_name', info);
 }
 
 function setInfo_EmergencyContact_Phone(info) {
-    localStorage.setItem('uinfo_phone', info);
+    localStorage.setItem('uinfo_emergencycontact_phone', info);
 }
 
 function setInfo_UserNotes(info) {
@@ -150,20 +150,39 @@ function goBack() {
 }
 
 function loadSettings() {
-    $$('input[name=setting_name').val(getInfo_Name());
-    $$('input[name=setting_phone').val(getInfo_Phone());
-    $$('input[name=setting_address').val(getInfo_Address());
-    $$('input[name=setting_bloodtype').val(getInfo_BloodType());
-    $$('input[name=setting_medications').val(getInfo_Medications());
-    $$('input[name=setting_allergies').val(getInfo_Allergies());
-    $$('input[name=setting_medicalconditions').val(getInfo_MedicalConditions());
-    $$('input[name=setting_doctorinfo').val(getInfo_DoctorInfo());
-    $$('input[name=setting_emergencycontact_name').val(getInfo_EmergencyContact_Name());
-    $$('input[name=setting_emergencycontact_phone').val(getInfo_EmergencyContact_Phone());
-    $$('input[name=setting_usernotes').val(getInfo_UserNotes());
+    let uinf = JSON.parse(localStorage.getItem('uinfo'));
+    if (uinf) {
+        $$('input[name=setting_name').val(uinf.name);
+        $$('input[name=setting_phone').val(uinf.phone);
+        $$('input[name=setting_address').val(uinf.address);
+        $$('input[name=setting_bloodtype').val(uinf.bloodtype);
+        $$('input[name=setting_medications').val(uinf.medications);
+        $$('input[name=setting_allergies').val(uinf.allergies);
+        $$('input[name=setting_medicalconditions').val(uinf.medicalconditions);
+        $$('input[name=setting_doctorinfo').val(uinf.doctorinfo);
+        $$('input[name=setting_emergencycontact_name').val(uinf.emergencycontact_name);
+        $$('input[name=setting_emergencycontact_phone').val(uinf.emergencycontact_phone);
+        $$('input[name=setting_usernotes').val(uinf.usernotes);
+    }
 }
 
 function saveSettings() {
+    let uobj = {
+        name: $$('input[name=setting_name').val(),
+        phone: $$('input[name=setting_phone').val(),
+        address: $$('input[name=setting_address').val(),
+        bloodtype: $$('input[name=setting_bloodtype').val(),
+        medications: $$('input[name=setting_medications').val(),
+        allergies: $$('input[name=setting_allergies').val(),
+        medicalconditions: $$('input[name=setting_medicalconditions').val(),
+        doctorinfo: $$('input[name=setting_doctorinfo').val(),
+        emergencycontact_name: $$('input[name=setting_emergencycontact_name').val(),
+        emergencycontact_phone: $$('input[name=setting_emergencycontact_phone').val(),
+        usernotes: $$('input[name=setting_usernotes').val()
+    };
+    localStorage.setItem('uinfo', JSON.stringify(uobj));
+    app.addNotification({ message: 'Saved Info.' });
+    goBack();
 }
 /* ========= End Functions ======= */
 

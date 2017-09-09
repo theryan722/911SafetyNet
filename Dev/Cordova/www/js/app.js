@@ -55,8 +55,8 @@ function loadDialPage() {
     mainView.router.loadPage('pages/dial.html');
 }
 
-function loadInfoPage() {
-    mainView.router.loadPage('pages/info.html');
+function loadSetInfoPage() {
+    mainView.router.loadPage('pages/setinfo.html');
 }
 
 function loadMedicalIDPage() {
@@ -77,7 +77,7 @@ function displayMenuActions() {
         {
             text: 'Set Info',
             onClick: function () {
-                loadInfoPage();
+                loadSetInfoPage();
             }
         }
     ];

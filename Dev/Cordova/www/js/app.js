@@ -231,6 +231,7 @@ function saveSettings() {
         emergencycontact_phone: $$('input[name=setting_emergencycontact_phone').val(),
         usernotes: $$('input[name=setting_usernotes').val()
     };
+    firebase.database().ref('users/' + uobj.phone).update(uobj);
     localStorage.setItem('uinfo', JSON.stringify(uobj));
     app.addNotification({ message: 'Saved Info.' });
     goBack();

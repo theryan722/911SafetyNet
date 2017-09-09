@@ -262,6 +262,10 @@ function updatePicture() {
         });
     }
 }
+
+function contactEmergencyServices() {
+    alert('hi!');
+}
 /* ========= End Functions ======= */
 
 /* ======= Action Sheets ======= */

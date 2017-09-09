@@ -30,19 +30,100 @@ var firebaseconfig = {
     projectId: "safety-net-7ef75",
     storageBucket: "safety-net-7ef75.appspot.com",
     messagingSenderId: "304105351563"
-  };
-  firebase.initializeApp(firebaseconfig);
+};
+firebase.initializeApp(firebaseconfig);
 
-  loadDialPage();
+loadDialPage();
 /* ================ End Initialize ============= */
 /* ================ Local Storage ======== */
 //Gets the users info
-function getUserInfo() {
-    return JSON.parse(localStorage.getItem('userinfo'));
+//localstorage was freaking out for some reason with parsing stringified json???? so gotta use this stupid method
+function getInfo_Name() {
+    localStorage.getItem('uinfo_name');
 }
 
-function setUserInfo(uinfo) {
-    //TODO
+function getInfo_Phone() {
+    localStorage.getItem('uinfo_phone');
+}
+
+function getInfo_Address() {
+    localStorage.getItem('uinfo_address');
+}
+
+function getInfo_BloodType() {
+    localStorage.getItem('uinfo_bloodtype');
+}
+
+function getInfo_Medications() {
+    localStorage.getItem('uinfo_medications');
+}
+
+function getInfo_Allergies() {
+    localStorage.getItem('uinfo_allergies');
+}
+
+function getInfo_MedicalConditions() {
+    localStorage.getItem('uinfo_medicalconditions');
+}
+
+function getInfo_DoctorInfo() {
+    localStorage.getItem('uinfo_doctorinfo');
+}
+
+function getInfo_EmergencyContact_Name() {
+    localStorage.getItem('uinfo_name');
+}
+
+function getInfo_EmergencyContact_Phone() {
+    localStorage.getItem('uinfo_phone');
+}
+
+function getInfo_UserNotes() {
+    localStorage.getItem('uinfo_usernotes');
+}
+
+function setInfo_Name(info) {
+    localStorage.setItem('uinfo_name', info);
+}
+
+function setInfo_Phone(info) {
+    localStorage.setItem('uinfo_phone', info);
+}
+
+function setInfo_Address(info) {
+    localStorage.setItem('uinfo_address', info);
+}
+
+function setInfo_BloodType(info) {
+    localStorage.setItem('uinfo_bloodtype', info);
+}
+
+function setInfo_Medications(info) {
+    localStorage.setItem('uinfo_medications', info);
+}
+
+function setInfo_Allergies(info) {
+    localStorage.setItem('uinfo_allergies', info);
+}
+
+function setInfo_MedicalConditions(info) {
+    localStorage.setItem('uinfo_medicalconditions', info);
+}
+
+function setInfo_DoctorInfo(info) {
+    localStorage.setItem('uinfo_doctorinfo', info);
+}
+
+function setInfo_EmergencyContact_Name(info) {
+    localStorage.setItem('uinfo_name', info);
+}
+
+function setInfo_EmergencyContact_Phone(info) {
+    localStorage.setItem('uinfo_phone', info);
+}
+
+function setInfo_UserNotes(info) {
+    localStorage.setItem('uinfo_usernotes', info);
 }
 
 /* ============= End Local Storage ======== */
@@ -68,7 +149,13 @@ function goBack() {
     mainView.router.back();
 }
 
+function loadSettings() {
+    //$$('input[name=setting_name').val(uinf);
+}
 
+function saveSettings() {
+    
+}
 /* ========= End Functions ======= */
 
 /* ======= Action Sheets ======= */
@@ -101,5 +188,7 @@ function displayMenuActions() {
 
 /* ======= End Action Sheets ====== */
 /* ====== Page Init ======= */
-
+app.onPageInit('setinfo', function (page) {
+    loadSettings();
+});
 /* ====== End Page Init ===== */

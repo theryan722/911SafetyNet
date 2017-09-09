@@ -70,3 +70,36 @@ function goBack() {
 
 
 /* ========= End Functions ======= */
+
+/* ======= Action Sheets ======= */
+function displayMenuActions() {
+    var buttons1 = [
+        {
+            text: 'Set Info',
+            onClick: function () {
+                loadInfoPage();
+            }
+        }
+    ];
+    var buttons2 = [
+        {
+            text: 'About',
+            onClick: function () {
+                loadAboutPage();
+            }
+        }
+    ];
+    var buttons3 = [
+        {
+            text: 'Cancel',
+            color: 'red'
+        }
+    ];
+    app.actions([buttons1, buttons2, buttons3]);
+}
+
+
+/* ======= End Action Sheets ====== */
+/* ====== Page Init ======= */
+
+/* ====== End Page Init ===== */

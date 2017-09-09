@@ -150,11 +150,20 @@ function goBack() {
 }
 
 function loadSettings() {
-    //$$('input[name=setting_name').val(uinf);
+    $$('input[name=setting_name').val(getInfo_Name());
+    $$('input[name=setting_phone').val(getInfo_Phone());
+    $$('input[name=setting_address').val(getInfo_Address());
+    $$('input[name=setting_bloodtype').val(getInfo_BloodType());
+    $$('input[name=setting_medications').val(getInfo_Medications());
+    $$('input[name=setting_allergies').val(getInfo_Allergies());
+    $$('input[name=setting_medicalconditions').val(getInfo_MedicalConditions());
+    $$('input[name=setting_doctorinfo').val(getInfo_DoctorInfo());
+    $$('input[name=setting_emergencycontact_name').val(getInfo_EmergencyContact_Name());
+    $$('input[name=setting_emergencycontact_phone').val(getInfo_EmergencyContact_Phone());
+    $$('input[name=setting_usernotes').val(getInfo_UserNotes());
 }
 
 function saveSettings() {
-    
 }
 /* ========= End Functions ======= */
 

@@ -224,3 +224,4 @@ pip-log.txt
 #Cordova
 Dev/Cordova/platforms
 Dev/Cordova/plugins
+Dev/Cordova/node_modules

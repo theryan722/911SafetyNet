@@ -152,7 +152,18 @@ function goBack() {
 function loadMedicalIDInfo() {
     let uinf = JSON.parse(localStorage.getItem('uinfo'));
     if (uinf) {
-        
+        $$('#u_name').html(uinf.name);
+        $$('#u_phone').html(uinf.phone);
+        $$('#u_birthdate').html(uinf.birthdate);
+        $$('#u_address').html(uinf.address);
+        $$('#u_bloodtype').html(uinf.bloodtype);
+        $$('#u_medications').html(uinf.medications);
+        $$('#u_allergies').html(uinf.allergies);
+        $$('#u_medicalconditions').html(uinf.medicalconditions);
+        $$('#u_doctorinfo').html(uinf.doctorinfo);
+        $$('#u_emergencycontact_name').html(uinf.emergencycontact_name);
+        $$('#u_emergencycontact_phone').html(uinf.emergencycontact_phone);
+        $$('#u_usernotes').html(uinf.usernotes);
     }
 }
 
@@ -160,6 +171,7 @@ function loadSettings() {
     let uinf = JSON.parse(localStorage.getItem('uinfo'));
     if (uinf) {
         $$('input[name=setting_name').val(uinf.name);
+        $$('input[name=setting_birthdate').val(uinf.birthdate);
         $$('input[name=setting_phone').val(uinf.phone);
         $$('input[name=setting_address').val(uinf.address);
         $$('input[name=setting_bloodtype').val(uinf.bloodtype);
@@ -176,6 +188,7 @@ function loadSettings() {
 function saveSettings() {
     let uobj = {
         name: $$('input[name=setting_name').val(),
+        birthdate: $$('input[name=setting_birthdate').val(),
         phone: $$('input[name=setting_phone').val(),
         address: $$('input[name=setting_address').val(),
         bloodtype: $$('input[name=setting_bloodtype').val(),

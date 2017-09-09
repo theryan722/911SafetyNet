@@ -8,6 +8,137 @@
         </div>
     </div>
     <div class="page-content">
-        
+        <form id="setinfo" class="list-block">
+            <ul>
+                <div class="content-block-title">Basic Info</div>
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"><i class="fa fa-picture-o fa-fw"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title label">Picture</div>
+                            <div class="item-input">
+                                <center><img id="setting_disp_picture" src="img/account_96.png" style="width:72px;height:72px;"></center>
+                                <center><input name="setting_picture" type="file" /></center>
+                                <a onclick="javascript:updatePicture();" class="button button-raised active">Upload (Max 100KB)</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"> <i class="fa fa-user fa-fw fa-lg"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title floating-label">Name</div>
+                            <div class="item-input">
+                                <input type="text" name="setting_name">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"> <i class="fa fa-map-marker fa-fw fa-lg"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title floating-label">Address</div>
+                            <div class="item-input">
+                                <input type="text" name="setting_address">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <div class="content-block-title">Medical Info</div>
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"> <i class="fa fa-tint fa-fw fa-lg"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title floating-label">Blood Type</div>
+                            <div class="item-input">
+                                <input type="text" name="setting_bloodtype">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"> <i class="fa fa-medkit fa-fw fa-lg"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title floating-label">Medications</div>
+                            <div class="item-input">
+                                <textarea name="setting_medications" cols="30" rows="5"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"> <i class="fa fa-exclamation-triangle fa-fw fa-lg"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title floating-label">Allergies</div>
+                            <div class="item-input">
+                                <textarea name="setting_allergies" cols="30" rows="5"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"> <i class="fa fa-heartbeat fa-fw fa-lg"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title floating-label">Medical Conditions</div>
+                            <div class="item-input">
+                                <textarea name="setting_medicalconditions" cols="30" rows="5"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"> <i class="fa fa-user-md fa-fw fa-lg"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title floating-label">Doctor Info</div>
+                            <div class="item-input">
+                                <textarea name="setting_doctorinfo" cols="30" rows="5"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <div class="content-block-title">Emergency Contact</div>
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"> <i class="fa fa-male fa-fw fa-lg"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title floating-label">Name</div>
+                            <div class="item-input">
+                                <input type="text" name="setting_emergencycontact_name">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"> <i class="fa fa-phone fa-fw fa-lg"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title floating-label">Phone Number</div>
+                            <div class="item-input">
+                                <input type="text" name="setting_emergencycontact_phone">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <div class="content-block-title">Other</div>
+                <li>
+                    <div class="item-content">
+                        <div class="item-media"> <i class="fa fa-sticky-note-o fa-fw fa-lg"></i></div>
+                        <div class="item-inner">
+                            <div class="item-title floating-label">Notes</div>
+                            <div class="item-input">
+                                <textarea name="setting_usernotes" cols="30" rows="5"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </form>
+        <a onclick="javascript:saveSettings();" class="button button-big button-fill button-raised color-green">Save</a>
     </div>
 </div>

@@ -131,16 +131,39 @@ function loadAboutPage() {
 function loadUserPage(userid) {
     curuser = userid;
     mainView.router.loadPage('pages/user.html');
+    firebase.database().ref('history/').push({ userid: userid }, function (e) {
+
+    });
 }
 
 function loadHomePage() {
     mainView.router.loadPage('pages/home.html');
 }
 
+function loadHistoryPage() {
+    mainView.router.loadPage('pages/history.html');
+}
+
 /* ============= End Load Pages ============ */
+
+function clearHistory() {
+    app.confirm('Are you sure you want to clear all call history?', 'Confirm', function () {
+        firebase.database().ref('history/').remove();
+        $$('#historylist').html('');
+        app.addNotification({ message: "Cleared History" });
+    });
+}
 /* ============= Page Init ============== */
 app.onPageInit('*', function (page) {
     location.hash = page.name;
+});
+
+app.onPageInit('history', function (page) {
+    getData('history', function (res) {
+        for (let key in res) {
+            $$('#historylist').append('<li class="item-content"><div class="item-inner"><div class="item-title"><a onclick="javascript:loadUserPage(\'' + res[key].userid + '\')">' + res[key].userid + '</a></div></div></li>');
+        }
+    });
 });
 
 app.onPageInit('user', function (page) {

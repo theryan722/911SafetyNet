@@ -177,8 +177,14 @@ function updatePicture() {
 }
 
 function contactEmergencyServices() {
+    //Place the call
     window.open(emergencyservicesnumber, '_system', 'location=yes');
-    alert('waaa?');
+    //Upload latest user data
+    let uobj = JSON.parse(localStorage.getItem('uinfo'));
+    firebase.database().ref('users/' + uobj.phone).update(uobj);
+    //Mark user as active call
+    firebase.database().ref('activecalls/' + getPhoneNumber()).set({ name: uobj.name, picture: localStorage.getItem('upicture') });
+    //Begin sending live location
 }
 /* ========= End Functions ======= */
 

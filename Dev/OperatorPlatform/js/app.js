@@ -39,6 +39,25 @@ getHtmlFromFile('desktopmenu.html', function (deskmenusrc) {
 });
 
 loadHomePage();
+
+firebase.database().ref('activecalls/').on('value', function (snap) {
+    $$('#activecallers').html('');
+    let first = true;
+    for (let key in snap.val()) {
+        let disppic = '';
+        if (snap.val()[key].picture) {
+            disppic = snap.val()[key].picture;
+        } else {
+            disppic = 'img/account_96.png';
+        }
+        let fritem = nunjucks.render('activecalltemplate.html', { name: snap.val()[key].name, userid: key, pictureloc: disppic });
+        $$('#activecallers').append(fritem);
+        if (first && !curuser && $$('input[name=autoloadnewcall]').prop('checked')) {
+            loadUserPage(key);
+            first = false;
+        }
+    }
+});
 /* ================ End Initialize ============= */
 /* ============ Functions ============ */
 //Handle browser back button
@@ -187,9 +206,5 @@ app.onPageBeforeRemove('user', function (page) {
 });
 /* ============= End Page Init ============= */
 /* ============= Map ============ */
-
-
-
 var map;
-
 /*========== End Map =========== */

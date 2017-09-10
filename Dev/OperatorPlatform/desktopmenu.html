@@ -10,7 +10,8 @@
                 <!-- Search Bar -->
                 <form class="searchbar">
                     <div class="searchbar-input">
-                        <input onkeypress="if(event.keyCode === 13){event.preventDefault();loadUserFromSearch();}" type="search" name="useridsearch" placeholder="Lookup Phone #">
+                        <input onkeypress="if(event.keyCode === 13){event.preventDefault();loadUserFromSearch();}" type="search" name="useridsearch"
+                            placeholder="Lookup Phone #">
                         <a href="#" class="searchbar-clear"></a>
                     </div>
                     <a href="#" class="searchbar-cancel">Cancel</a>
@@ -50,10 +51,29 @@
                         </li>
                     </ul>
                 </div>
+                
                 <div class="content-block-title">Active Callers</div>
-                <div class="content-block">
-                    <div id="activecallers">
-                    </div>
+                <div class="list-block media-list">
+                        <div class="list-block">
+                                <ul>
+                                    <li>
+                                        <div class="item-content">
+                                            <div class="item-inner">
+                                                <div class="item-title">Auto load calls if not in call</div>
+                                                <div class="item-input">
+                                                    <label class="label-switch">
+                                                        <input name="autoloadnewcall" type="checkbox">
+                                                        <div class="checkbox"></div>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                    <ul id="activecallers">
+
+                    </ul>
                 </div>
             </div>
         </div>

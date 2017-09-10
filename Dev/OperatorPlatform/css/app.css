@@ -10,7 +10,7 @@ a:hover {
   
 .userprofile .profilebanner {
     width: 100%;
-    height: 400px;
+    height: 100px;
 }
 .userprofile .icons .profilepicture {
     width: 180px;
@@ -42,7 +42,7 @@ a:hover {
   
 @media screen and (max-width: 600px) {
     .profilebanner {
-      height: 200px !important;
+      height: 50px !important;
     }
 }
 /* ======== End User Profile ======= */

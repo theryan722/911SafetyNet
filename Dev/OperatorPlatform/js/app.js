@@ -69,6 +69,13 @@ function loadUserFromSearch() {
     }   
 }
 
+//Gets data for a specific path.
+function getData(node, callback) {
+    firebase.database().ref(node).once('value').then(function (snapshot) {
+        callback(snapshot.val());
+    });
+}
+
 /* =========== End Functions ============ */
 /* =========== Load Pages ============= */
 function loadAboutPage() {
@@ -90,7 +97,34 @@ app.onPageInit('*', function (page) {
     location.hash = page.name;
 });
 
-app.onPageInit('*', function (page) {
-    location.hash = page.name;
+app.onPageInit('user', function (page) {
+    if (curuser) {
+        getData('activecalls/' + curuser, function (exists) {
+            if (exists) {
+                $$('#markcall').show();
+            } else {
+                $$('#markcall').hide();
+            }
+        });
+        getData('users/' + curuser, function (udata) {
+            $$('#u_name').html(udata.name);
+            $$('#u_phone').html(udata.phone);
+            $$('#u_birthdate').html(udata.birthdate);
+            $$('#u_address').html(udata.address);
+            $$('#u_bloodtype').html(udata.bloodtype);
+            $$('#u_medications').html(udata.medications);
+            $$('#u_allergies').html(udata.allergies);
+            $$('#u_medicalconditions').html(udata.medicalconditions);
+            $$('#u_doctorinfo').html(udata.doctorinfo);
+            $$('#u_emergencycontact_name').html(udata.emergencycontact_name);
+            $$('#u_emergencycontact_phone').html(udata.emergencycontact_phone);
+            $$('#u_usernotes').html(udata.usernotes);
+            if (udata.picture) {
+                $$('#u_picture').attr('src', udata.picture);
+            } else {
+                $$('#u_picture').attr('src', 'img/account_96.png');
+            }
+        });
+    }
 });
 /* ============= End Page Init ============= */

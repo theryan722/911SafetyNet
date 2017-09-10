@@ -11,14 +11,14 @@
         <img class="profilebanner" src="img/black.png" alt="Banner Photo"></img>
         <div class="container icons">
             <center>
-                <img class="profilepicture" src="img/account_96.png" alt="Profile Photo"></img>
+                <img id="u_picture" class="profilepicture" src="img/account_96.png" alt="Profile Photo"></img>
             </center>
         </div>
         <div class="details">
             <h1 id="u_name">{{name}}</h1>
             <h4 id="u_phone">({{phone}})</h4>
             <br>
-            <a onclick="javascript:markCallAsClosed();" class="button button-raised button-fill color-red">Mark Call as Closed</a>
+            <a id="markcall" onclick="javascript:markCallAsClosed();" class="button button-raised button-fill color-red">Mark Call as Closed</a>
         </div>
         <div class="content-block-title">General</div>
         <div class="content-block">

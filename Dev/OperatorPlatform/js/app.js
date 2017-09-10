@@ -156,22 +156,39 @@ app.onPageInit('user', function (page) {
                 lat: udata.latitude,
                 lng: udata.longitude
             });
-            map.addMarker({
-                lat: udata.latitude,
-                lng: udata.longitude,
-                title: 'Lima',
-                infoWindow: {
-                    content: '<p style="font-weight: bold;">Location of ' + udata.name + '</p><p>' + 'Lat: ' + udata.latitude + ' Long: ' + udata.longitude + '</p><p>' + formatTimeStamp(udata.timestamp) + '</p>'
+            firebase.database().ref('users/' + curuser).on('value', function (snap) {
+                if (map) {
+                    /* let clat = map.getCenter().toString().split(',')[0].replace(/\(|\)/g,'');
+                    let clong = map.getCenter().toString().split(', ')[1].replace(/\(|\)/g,'');
+                    if (clat === snap.val().latitude && clong === snap.val().longitude) {
+                        alert('same!');
+                    } */
+                    map.removeMarkers();
+                    map.addMarker({
+                        lat: snap.val().latitude,
+                        lng: snap.val().longitude,
+                        title: 'Time: ' + formatTimeStamp(snap.val().timestamp),
+                        infoWindow: {
+                            content: '<p style="font-weight: bold;">Location of ' + snap.val().name + '</p><p>' + 'Lat: ' + snap.val().latitude + ' Long: ' + snap.val().longitude + '</p><p>' + formatTimeStamp(snap.val().timestamp) + '</p>'
+                        }
+                    });
+                    map.setCenter(snap.val().latitude, snap.val().longitude, function () {
+                        //map centered
+                    });
                 }
             });
         });
-        /*firebase.database().ref('users/' + curuser).on('value', function (snap) {
-            getMap(snap.val().latitude, snap.val().longitude);
-        }); */
     }
+});
+
+app.onPageBeforeRemove('user', function (page) {
+    firebase.database().ref('users/' + curuser).off();
+    curuser = '';
 });
 /* ============= End Page Init ============= */
 /* ============= Map ============ */
+
+
 
 var map;
 

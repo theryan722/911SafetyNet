@@ -17,7 +17,7 @@ var app = new Framework7({
     }
 });
 var $$ = Dom7; //DOM Library
-
+var curuser = '';
 var mainView = app.addView('.view-main', {
     main: true
 });
@@ -63,10 +63,21 @@ function getHtmlFromFile(url, callback) {
     });
 }
 
+function loadUserFromSearch() {
+    if ($$('input[name=useridsearch]').val()) {
+        loadUserPage($$('input[name=useridsearch]').val());
+    }   
+}
+
 /* =========== End Functions ============ */
 /* =========== Load Pages ============= */
 function loadAboutPage() {
     mainView.router.loadPage('pages/about.html');
+}
+
+function loadUserPage(userid) {
+    curuser = userid;
+    mainView.router.loadPage('pages/user.html');
 }
 
 function loadHomePage() {
@@ -75,6 +86,10 @@ function loadHomePage() {
 
 /* ============= End Load Pages ============ */
 /* ============= Page Init ============== */
+app.onPageInit('*', function (page) {
+    location.hash = page.name;
+});
+
 app.onPageInit('*', function (page) {
     location.hash = page.name;
 });

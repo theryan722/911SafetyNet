@@ -1,0 +1,56 @@
+<div data-page="user" class="page">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="left">
+                <a href="#" class="back link"> <i class="fa fa-arrow-left"></i></a>
+            </div>
+            <div class="center">Active Call</div>
+        </div>
+    </div>
+    <div class="page-content userprofile">
+        <img class="profilebanner" src="img/black.png" alt="Banner Photo"></img>
+        <div class="container icons">
+            <center>
+                <img class="profilepicture" src="img/account_96.png" alt="Profile Photo"></img>
+            </center>
+        </div>
+        <div class="details">
+            <h1 id="u_name">{{name}}</h1>
+            <h4 id="u_phone">({{phone}})</h4>
+            <br>
+            <a onclick="javascript:markCallAsClosed();" class="button button-raised button-fill color-red">Mark Call as Closed</a>
+        </div>
+        <div class="content-block-title">General</div>
+        <div class="content-block">
+            <h3><i class="fa fa-birthday-cake fa-fw"></i> Birth Date</h3>
+            <p id="u_birthdate"></p>
+            <h3><i class="fa fa-map-marker fa-fw"></i> Address</h3>
+            <p id="u_address"></p>
+        </div>
+        <div class="content-block-title">Medical Info</div>
+        <div class="content-block">
+            <h3><i class="fa fa-tint fa-fw"></i> Blood Type</h3>
+            <p id="u_bloodtype"></p>
+            <h3><i class="fa fa-medkit fa-fw"></i> Medications</h3>
+            <p id="u_medications"></p>
+            <h3><i class="fa fa-exclamation-triangle fa-fw"></i> Allergies</h3>
+            <p id="u_allergies"></p>
+            <h3><i class="fa fa-heartbeat fa-fw"></i> Medical Conditions</h3>
+            <p id="u_medicalconditions"></p>
+            <h3><i class="fa fa-user-md fa-fw"></i> Doctor Info</h3>
+            <p id="u_doctorinfo"></p>
+        </div>
+        <div class="content-block-title">Emergency Contact</div>
+        <div class="content-block">
+            <h3><i class="fa fa-male fa-fw"></i> Emergency Contact Name</h3>
+            <p id="u_emergencycontact_name"></p>
+            <h3><i class="fa fa-phone fa-fw"></i> Emergency Contact Phone</h3>
+            <p id="u_emergencycontact_phone"></p>
+        </div>
+        <div class="content-block-title">Other</div>
+        <div class="content-block">
+            <h3><i class="fa fa-sticky-note-o fa-fw"></i> Notes</h3>
+            <p id="u_usernotes"></p>
+        </div>
+    </div>
+</div>

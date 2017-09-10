@@ -10,7 +10,7 @@
                 <!-- Search Bar -->
                 <form class="searchbar">
                     <div class="searchbar-input">
-                        <input type="search" placeholder="Search">
+                        <input onkeypress="if(event.keyCode === 13){event.preventDefault();loadUserFromSearch();}" type="search" name="useridsearch" placeholder="Lookup Phone #">
                         <a href="#" class="searchbar-clear"></a>
                     </div>
                     <a href="#" class="searchbar-cancel">Cancel</a>
@@ -21,7 +21,7 @@
                         <li>
                             <a onclick="javascript:loadHomePage;" class="item-link close-panel">
                                 <div class="item-content">
-                                    <div class="item-media"><i class="fa fa-inbox fa-2x" aria-hidden="true"></i></div>
+                                    <div class="item-media"><i class="fa fa-home fa-2x" aria-hidden="true"></i></div>
                                     <div class="item-inner">
                                         <div class="item-title">Home</div>
                                     </div>
@@ -31,7 +31,7 @@
                         <li>
                             <a onclick="javascript:loadHistoryPage();" class="item-link close-panel">
                                 <div class="item-content">
-                                    <div class="item-media"><i class="fa fa-address-book-o fa-2x" aria-hidden="true"></i></div>
+                                    <div class="item-media"><i class="fa fa-history fa-2x" aria-hidden="true"></i></div>
                                     <div class="item-inner">
                                         <div class="item-title">History</div>
                                     </div>

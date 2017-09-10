@@ -66,7 +66,7 @@ function getHtmlFromFile(url, callback) {
 function loadUserFromSearch() {
     if ($$('input[name=useridsearch]').val()) {
         loadUserPage($$('input[name=useridsearch]').val());
-    }   
+    }
 }
 
 //Gets data for a specific path.
@@ -74,6 +74,33 @@ function getData(node, callback) {
     firebase.database().ref(node).once('value').then(function (snapshot) {
         callback(snapshot.val());
     });
+}
+
+function markCallAsClosed() {
+    if (curuser) {
+        firebase.database().ref('activecalls/' + curuser).remove();
+        $$('#markcall').hide();
+        app.addNotification({ message: 'Closed active call.' });
+    }
+}
+
+//Returns current locale/language
+function getLocale() {
+    return navigator.language || navigator.userLanguage;
+}
+
+//Converts epoch time to proper format in users local time
+function formatTimeStamp(time, format = 'full') {
+    let res;
+    if (format === 'full') {
+        res = new Date(parseFloat(time)).toLocaleDateString(getLocale(), { hour: "2-digit", minute: "2-digit" });
+    } else if (format === 'date') {
+        res = new Date(parseFloat(time)).toLocaleDateString(getLocale(), { hour: "2-digit", minute: "2-digit" }).split(', ')[0];
+    } else {
+        //Time
+        res = new Date(parseFloat(time)).toLocaleDateString(getLocale(), { hour: "2-digit", minute: "2-digit" }).split(', ')[1]
+    }
+    return res;
 }
 
 /* =========== End Functions ============ */
@@ -124,7 +151,28 @@ app.onPageInit('user', function (page) {
             } else {
                 $$('#u_picture').attr('src', 'img/account_96.png');
             }
+            map = new GMaps({
+                el: '#u_map',
+                lat: udata.latitude,
+                lng: udata.longitude
+            });
+            map.addMarker({
+                lat: udata.latitude,
+                lng: udata.longitude,
+                title: 'Lima',
+                infoWindow: {
+                    content: '<p style="font-weight: bold;">Location of ' + udata.name + '</p><p>' + 'Lat: ' + udata.latitude + ' Long: ' + udata.longitude + '</p><p>' + formatTimeStamp(udata.timestamp) + '</p>'
+                }
+            });
         });
+        /*firebase.database().ref('users/' + curuser).on('value', function (snap) {
+            getMap(snap.val().latitude, snap.val().longitude);
+        }); */
     }
 });
 /* ============= End Page Init ============= */
+/* ============= Map ============ */
+
+var map;
+
+/*========== End Map =========== */

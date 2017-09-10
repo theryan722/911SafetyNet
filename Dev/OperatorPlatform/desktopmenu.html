@@ -7,59 +7,53 @@
     <div class="pages">
         <div data-page="desktopmainmenu" class="page">
             <div class="page-content">
+                <!-- Search Bar -->
+                <form class="searchbar">
+                    <div class="searchbar-input">
+                        <input type="search" placeholder="Search">
+                        <a href="#" class="searchbar-clear"></a>
+                    </div>
+                    <a href="#" class="searchbar-cancel">Cancel</a>
+                </form>
+                <!-- End Search Bar -->
                 <div class="list-block">
                     <ul>
                         <li>
-                            <a onclick="javascript:loadMessagesPage();" class="item-link close-panel">
+                            <a onclick="javascript:loadHomePage;" class="item-link close-panel">
                                 <div class="item-content">
                                     <div class="item-media"><i class="fa fa-inbox fa-2x" aria-hidden="true"></i></div>
                                     <div class="item-inner">
-                                        <div class="item-title">Messages</div>
+                                        <div class="item-title">Home</div>
                                     </div>
                                 </div>
                             </a>
                         </li>
                         <li>
-                            <a onclick="javascript:loadContactsPage();" class="item-link close-panel">
+                            <a onclick="javascript:loadHistoryPage();" class="item-link close-panel">
                                 <div class="item-content">
                                     <div class="item-media"><i class="fa fa-address-book-o fa-2x" aria-hidden="true"></i></div>
                                     <div class="item-inner">
-                                        <div class="item-title">Contacts</div>
+                                        <div class="item-title">History</div>
                                     </div>
                                 </div>
                             </a>
                         </li>
                         <li>
-                            <a onclick="javascript:loadFeedPage();" class="item-link close-panel">
+                            <a onclick="javascript:loadAboutPage();" class="item-link close-panel">
                                 <div class="item-content">
-                                    <div class="item-media"><i class="fa fa-newspaper-o fa-2x" aria-hidden="true"></i></div>
+                                    <div class="item-media"><i class="fa fa-question-circle fa-2x" aria-hidden="true"></i></div>
                                     <div class="item-inner">
-                                        <div class="item-title">Feed</div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a onclick="javascript:loadNotificationsPage();" class="item-link close-panel">
-                                <div class="item-content">
-                                    <div class="item-media"><i class="fa fa-bell fa-2x" aria-hidden="true"></i></div>
-                                    <div class="item-inner">
-                                        <div class="item-title">Notifications</div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a onclick="javascript:loadMorePage();" class="item-link close-panel">
-                                <div class="item-content">
-                                    <div class="item-media"><i class="fa fa-ellipsis-h fa-2x" aria-hidden="true"></i></div>
-                                    <div class="item-inner">
-                                        <div class="item-title">More</div>
+                                        <div class="item-title">About</div>
                                     </div>
                                 </div>
                             </a>
                         </li>
                     </ul>
+                </div>
+                <div class="content-block-title">Active Callers</div>
+                <div class="content-block">
+                    <div id="activecallers">
+                    </div>
                 </div>
             </div>
         </div>

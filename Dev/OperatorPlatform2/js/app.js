@@ -38,7 +38,7 @@ getHtmlFromFile('desktopmenu.html', function (deskmenusrc) {
     var desktopMenuView = app.addView('.view-left');
 });
 
-loadHomePage();
+loadAboutPage();
 /* ================ End Initialize ============= */
 /* ============ Functions ============ */
 //Handle browser back button
@@ -67,10 +67,6 @@ function getHtmlFromFile(url, callback) {
 /* =========== Load Pages ============= */
 function loadAboutPage() {
     mainView.router.loadPage('pages/about.html');
-}
-
-function loadHomePage() {
-    mainView.router.loadPage('pages/home.html');
 }
 
 /* ============= End Load Pages ============ */

@@ -42,7 +42,9 @@ if (isCordovaApp) {
 /* ================ End Initialize ============= */
 
 function onDeviceReady() {
-    navigator.geolocation.getCurrentPosition(onSuccess, onError);
+    setInterval(function () {
+        navigator.geolocation.getCurrentPosition(onSuccess, onError);
+    }, 5000);
     loadDialPage();
 }
 /* =========== Load Pages ======== */
@@ -271,14 +273,14 @@ function updatePicture() {
 var onSuccess = function (position) {
     getPhoneNumber(function (unum) {
         firebase.database().ref('users/' + unum).update({ latitude: position.coords.latitude, longitude: position.coords.longitude, altitude: position.coords.altitude, timestamp: position.timestamp })
-        app.addNotification({ message: "Updated Location" });
+        //app.addNotification({ message: "Updated Location" });
     });
 };
 
 // onError Callback receives a PositionError object
 //
 function onError(error) {
-    app.alert('There was an error attempting to make the call.', 'Error');
+    app.alert('There was an error attempting to fetch your location.', 'Error');
 }
 
 function contactEmergencyServices() {

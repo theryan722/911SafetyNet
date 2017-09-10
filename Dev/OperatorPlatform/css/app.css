@@ -2,13 +2,6 @@
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
 
-body {
-    -webkit-touch-callout: none; /* prevent callout to copy image, etc when tap to hold */
-    -webkit-text-size-adjust: none; /* prevent webkit from resizing text to fit */
-    -webkit-user-select: none; /* prevent copy paste, to allow, change 'none' to 'text' */
-    user-select: none;
-}
-
 /* Show pointer cursor when hovering over link */
 a:hover {
     cursor:pointer;
@@ -53,3 +46,26 @@ a:hover {
     }
 }
 /* ======== End User Profile ======= */
+
+.view-left {
+    float: left;
+    width: 320px;
+    border-right: 1px solid #b2b2b2;
+}
+.view-main {
+    width: -webkit-calc(100% - 321px);
+    width: -moz-calc(100% - 321px);
+    width: -ms-calc(100% - 321px);
+    width: calc(100% - 321px);
+}
+@media (max-width: 768px) {
+    .view-left {
+        width: 240px;
+    }
+    .view-main {
+        width: -webkit-calc(100% - 241px);
+        width: -moz-calc(100% - 241px);
+        width: -ms-calc(100% - 241px);
+        width: calc(100% - 241px);
+    }
+}

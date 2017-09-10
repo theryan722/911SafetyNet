@@ -17,7 +17,7 @@ var app = new Framework7({
     }
 });
 var $$ = Dom7; //DOM Library
-var emergencyservicesnumber = ''
+var emergencyservicesnumber = 'tel:+1-347-781-9684';
 
 var mainView = app.addView('.view-main', {
     main: true
@@ -177,7 +177,8 @@ function updatePicture() {
 }
 
 function contactEmergencyServices() {
-    alert('hi!');
+    window.open(emergencyservicesnumber, '_system', 'location=yes');
+    alert('waaa?');
 }
 /* ========= End Functions ======= */
 

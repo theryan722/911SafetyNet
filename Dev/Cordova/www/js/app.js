@@ -17,7 +17,7 @@ var app = new Framework7({
     }
 });
 var $$ = Dom7; //DOM Library
-var emergencyservicesnumber = 'tel:+1-347-781-9684';
+var emergencyservicesnumber = 'tel:+1-908-342-7405';
 
 var mainView = app.addView('.view-main', {
     main: true
